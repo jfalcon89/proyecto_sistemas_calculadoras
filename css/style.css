@@ -1,0 +1,39 @@
+.modal_container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.357);
+    position: fixed;
+    display: flex;
+    top: 0;
+    visibility: hidden;
+}
+
+.modal_reporte {
+    display: flex;
+    position: relative;
+    transition-duration: 2s;
+    /* margin-top: -500px; */
+    transform: translateY(-200%);
+    box-shadow: 0 0 13px #0000003f;
+}
+
+.efecto {
+    transition-duration: 1s;
+    /* transition-delay: 1s; */
+    transform: translateY(0%);
+    /* margin-top: 500px; */
+}
+
+.espaciado {
+    margin-bottom: 8px;
+}
+
+.containerClose {}
+
+.close {
+    background-color: red;
+    border: 10px;
+    cursor: pointer;
+    padding: 5px 13px;
+    box-shadow: 0 0 5px #767676;
+}
