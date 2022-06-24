@@ -1,4 +1,5 @@
 const btnCalculo = document.getElementById("btn");
+const btnLimpiar = document.getElementById("btnLimpiar");
 
 btnCalculo.addEventListener("click", () => {
     event.preventDefault();
@@ -17,5 +18,17 @@ btnCalculo.addEventListener("click", () => {
         labelResul.textContent = "La cuota mensual serian";
         labelRespuesta.textContent = `$${operacion} Pesos`;
     }
+
+});
+
+btnLimpiar.addEventListener("click", () => {
+    event.preventDefault();
+
+    monto.value = "";
+    cuota.value = "";
+    interes.value = "";
+    labelResul.textContent = "";
+    labelRespuesta.textContent = "";
+
 
 });

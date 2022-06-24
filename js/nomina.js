@@ -1,47 +1,60 @@
-const sueldoBruto = document.getElementById("sueldoBruto");
-const afp = document.getElementById("afp");
-const ars = document.getElementById("ars");
-const cooperativa = document.getElementById("cooperativa");
-const club = document.getElementById("club");
-const prestamos = document.getElementById("prestamos");
-const totalDescuentos = document.getElementById("totalDescuentos");
-const sueldoNeto = document.getElementById("sueldoNeto");
+let sueldoBruto = document.getElementById("sueldoBruto");
+let afp = document.getElementById("afp");
+let ars = document.getElementById("ars");
+let cooperativa = document.getElementById("cooperativa");
+let club = document.getElementById("club");
+let prestamos = document.getElementById("prestamos");
+let totalDescuentos = document.getElementById("totalDescuentos");
+let sueldoNeto = document.getElementById("sueldoNeto");
 const codigo = document.getElementById("codigo");
 const estatus = document.getElementById("estatus");
 const nombre = document.getElementById("nombre");
 const cedula = document.getElementById("cedula");
 
-afp.value = 0.0287 * sueldoBruto.value;
-ars.value = 0.03 * sueldoBruto.value;
-cooperativa.value = 0.02 * sueldoBruto.value;
-club.value = 0.006 * sueldoBruto.value;
-prestamos.value = 0.018 * sueldoBruto.value;
-totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
-sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
+// afp.value = 0.0287 * sueldoBruto.value;
+// ars.value = 0.03 * sueldoBruto.value;
+// cooperativa.value = 0.02 * sueldoBruto.value;
+// club.value = 0.006 * sueldoBruto.value;
+// prestamos.value = 0.018 * sueldoBruto.value;
+// totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
+// sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
 
+// funtion para ejecutar las operaciones y capturar cambios en el salario bruto
 sueldoBruto.addEventListener("change", () => {
-    console.log("hiciste cambio");
+    console.log("hiciste un cambio al sueldo");
 
     (function() {
 
-        afp.value = 0.0287 * sueldoBruto.value;
-        ars.value = 0.03 * sueldoBruto.value;;
-        cooperativa.value = 0.02 * sueldoBruto.value;
-        club.value = 0.006 * sueldoBruto.value;
-        prestamos.value = 0.018 * sueldoBruto.value;
+
+        let sueldoBrutoParametro = document.getElementById("sueldoBrutoParametro").value;
+        let afpParametro = document.getElementById("afpParametro").value;
+        let arsParametro = document.getElementById("arsParametro").value;
+        let cooperativaParametro = document.getElementById("cooperativaParametro").value;
+        let clubParametro = document.getElementById("clubParametro").value;
+        let prestamosParametro = document.getElementById("prestamosParametro").value;
+
+        sueldoBrutoParametro.value = sueldoBruto.value
+
+        afp.value = afpParametro * sueldoBruto.value;
+        ars.value = arsParametro * sueldoBruto.value;;
+        cooperativa.value = cooperativaParametro * sueldoBruto.value;
+        club.value = clubParametro * sueldoBruto.value;
+        prestamos.value = prestamosParametro * sueldoBruto.value;
+
+
         totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
         sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
 
     })();
-
 });
+
 
 // modal reporte
 
 const close = document.querySelector(".close");
 const btnImprimir = document.querySelector(".btnImprimir");
-const btnParametros = document.querySelector(".btnParametros");
 
+// funtion para abrir modal de reporte
 btnImprimir.addEventListener("click", () => {
     console.log("le diste abrir reporte")
 
@@ -50,27 +63,49 @@ btnImprimir.addEventListener("click", () => {
     const modal_reporte = document.querySelector(".modal_reporte");
     modal_reporte.classList.add("efecto");
 
-    // llenado de datos del reporte
-
+    // funtion pa llenado de datos del reporte
     (function() {
         const nombreR = document.getElementById("nombreR").value = nombre.value;
         const cedulaR = document.getElementById("cedulaR").value = cedula.value;
         const codigoR = document.getElementById("codigoR").value = codigo.value;
-        const sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBruto.value;
-        const afpR = document.getElementById("afpR").textContent = afp.value;
-        const arsR = document.getElementById("arsR").textContent = ars.value;
-        const cooperativaR = document.getElementById("cooperativaR").textContent = cooperativa.value;
-        const clubR = document.getElementById("clubR").textContent = club.value;
-        const prestamosR = document.getElementById("prestamosR").textContent = prestamos.value;
-        // const sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBruto.value;
-        const totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentos.value;
-        const sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNeto.value;
+        let sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBruto.value;
+        let afpR = document.getElementById("afpR").textContent = afp.value;
+        let arsR = document.getElementById("arsR").textContent = ars.value;
+        let cooperativaR = document.getElementById("cooperativaR").textContent = cooperativa.value;
+        let clubR = document.getElementById("clubR").textContent = club.value;
+        let prestamosR = document.getElementById("prestamosR").textContent = prestamos.value;
+        let totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentos.value;
+        let sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNeto.value;
+
+        // formato de valores a divisa en modal de impresion 
+        sueldoBrutoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoBrutoR);
+        sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBrutoR;
+
+        afpR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afpR);
+        afpR = document.getElementById("afpR").textContent = afpR;
+
+        arsR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(arsR);
+        arsR = document.getElementById("arsR").textContent = arsR;
+
+        cooperativaR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativaR);
+        cooperativaR = document.getElementById("cooperativaR").textContent = cooperativaR;
+
+        clubR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(clubR);
+        clubR = document.getElementById("clubR").textContent = clubR;
+
+        prestamosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamosR);
+        prestamosR = document.getElementById("prestamosR").textContent = prestamosR;
+
+        totalDescuentosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentosR);
+        totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentosR;
+
+        sueldoNetoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNetoR);
+        sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNetoR;
 
     })();
-
 });
 
-
+// funtion para cerrar modal de reporte
 close.addEventListener("click", () => {
     console.log("le diste a cerrar reporte")
 
@@ -83,6 +118,7 @@ close.addEventListener("click", () => {
 
 const btnImprimirR = document.querySelector(".btnImprimirR");
 
+// funtion para generar reporte pdf 
 btnImprimirR.addEventListener("click", () => {
     console.log("click en generar reporte")
 
@@ -98,4 +134,60 @@ btnImprimirR.addEventListener("click", () => {
 
     // Old monolithic-style usage:
     // html2pdf(element, opt);
+});
+
+const closeParametros = document.querySelector(".closeParametros");
+const btnParametros = document.querySelector(".btnParametros");
+const btnGuardarParametros = document.querySelector(".btnGuardarParametros");
+
+// funtion para abrir modal de parametros 
+btnParametros.addEventListener("click", () => {
+    console.log("le diste abrir parametros")
+
+    const modal_container_parametros = document.querySelector(".modal_container_parametros");
+    modal_container_parametros.style.visibility = "visible"
+    const modal_parametros = document.querySelector(".modal_parametros");
+    modal_parametros.classList.add("efectoParametros");
+
+    let sueldoBrutoParametro = document.getElementById("sueldoBrutoParametro");
+    sueldoBrutoParametro.value = sueldoBruto.value;
+
+});
+
+btnGuardarParametros.addEventListener("click", () => {
+    console.log("le diste guardar parametros");
+
+    let afpParametro = document.getElementById("afpParametro").value;
+    let arsParametro = document.getElementById("arsParametro").value;
+    let cooperativaParametro = document.getElementById("cooperativaParametro").value;
+    let clubParametro = document.getElementById("clubParametro").value;
+    let prestamosParametro = document.getElementById("prestamosParametro").value;
+
+    sueldoBruto.value = sueldoBrutoParametro.value;
+    console.log(sueldoBruto.value)
+    console.log(sueldoBrutoParametro.value)
+
+    afp.value = afpParametro * sueldoBruto.value;
+    ars.value = arsParametro * sueldoBruto.value;;
+    cooperativa.value = cooperativaParametro * sueldoBruto.value;
+    club.value = clubParametro * sueldoBruto.value;
+    prestamos.value = prestamosParametro * sueldoBruto.value;
+
+
+    totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
+    sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
+
+
+});
+
+// funtion para cerrar modal de parametros
+closeParametros.addEventListener("click", () => {
+    console.log("le diste a cerrar parametros")
+
+
+    const modal_container_parametros = document.querySelector(".modal_container_parametros");
+    modal_container_parametros.style.visibility = "hidden"
+    const modal_parametros = document.querySelector(".modal_parametros");
+    modal_parametros.classList.remove("efectoParametros");
+
 });

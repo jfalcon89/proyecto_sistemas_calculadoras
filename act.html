@@ -46,11 +46,12 @@
     <div class="container mb-3 d-flex justify-content-center">
         <form class="row g-1 w-25" id="formulario">
             <label for="exampleDataList" class="form-label">Elija un Genero</label>
-            <input class="form-control" list="datalistOptions" id="DataList" placeholder="Seleccionar sexo">
-            <datalist id="datalistOptions">
-                 <option value="masculino">
-                 <option value="femenina">
-            </datalist>
+            <!-- <input class="form-control" list="datalistOptions" id="DataList" placeholder="Seleccionar sexo"> -->
+            <select class="form-control" id="DataList" name="select" id="datalistOptions">
+                 <option value="seleccionar" selected>Seleccionar sexo</option>
+                 <option value="masculino">Masculino</option>
+                 <option value="femenina">Femenina</option>
+            </select >
 
             <label for="edad" class="form-label">Edad</label>
             <input type="number" class="form-control" name="edad" id="edad" required min="18" max="90">
