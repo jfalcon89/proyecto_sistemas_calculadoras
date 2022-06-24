@@ -11,20 +11,12 @@ const estatus = document.getElementById("estatus");
 const nombre = document.getElementById("nombre");
 const cedula = document.getElementById("cedula");
 
-// afp.value = 0.0287 * sueldoBruto.value;
-// ars.value = 0.03 * sueldoBruto.value;
-// cooperativa.value = 0.02 * sueldoBruto.value;
-// club.value = 0.006 * sueldoBruto.value;
-// prestamos.value = 0.018 * sueldoBruto.value;
-// totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
-// sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
 
-// funtion para ejecutar las operaciones y capturar cambios en el salario bruto
+// funtion para ejecutar las operaciones y capturar cambios en el campo salario bruto
 sueldoBruto.addEventListener("change", () => {
     console.log("hiciste un cambio al sueldo");
 
     (function() {
-
 
         let sueldoBrutoParametro = document.getElementById("sueldoBrutoParametro").value;
         let afpParametro = document.getElementById("afpParametro").value;
@@ -50,7 +42,6 @@ sueldoBruto.addEventListener("change", () => {
 
 
 // modal reporte
-
 const close = document.querySelector(".close");
 const btnImprimir = document.querySelector(".btnImprimir");
 
@@ -63,7 +54,7 @@ btnImprimir.addEventListener("click", () => {
     const modal_reporte = document.querySelector(".modal_reporte");
     modal_reporte.classList.add("efecto");
 
-    // funtion pa llenado de datos del reporte
+    // funtion para llenado de datos del reporte
     (function() {
         const nombreR = document.getElementById("nombreR").value = nombre.value;
         const cedulaR = document.getElementById("cedulaR").value = cedula.value;
@@ -77,7 +68,7 @@ btnImprimir.addEventListener("click", () => {
         let totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentos.value;
         let sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNeto.value;
 
-        // formato de valores a divisa en modal de impresion 
+        // formato de valores a divisa en modal de reporte 
         sueldoBrutoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoBrutoR);
         sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBrutoR;
 
@@ -136,6 +127,7 @@ btnImprimirR.addEventListener("click", () => {
     // html2pdf(element, opt);
 });
 
+// modal de parametros
 const closeParametros = document.querySelector(".closeParametros");
 const btnParametros = document.querySelector(".btnParametros");
 const btnGuardarParametros = document.querySelector(".btnGuardarParametros");
