@@ -10,6 +10,8 @@ const codigo = document.getElementById("codigo");
 const estatus = document.getElementById("estatus");
 const nombre = document.getElementById("nombre");
 const cedula = document.getElementById("cedula");
+let fechaActualReporte = document.getElementById("fechaActual");
+
 
 
 // funtion para ejecutar las operaciones y capturar cambios en el campo salario bruto
@@ -27,7 +29,6 @@ sueldoBruto.addEventListener("change", () => {
         let prestamosParametro = document.getElementById("prestamosParametro").value;
 
         sueldoBrutoParametro.value = sueldoBruto.value
-
         afp.value = afpParametro * sueldoBruto.value;
         ars.value = arsParametro * sueldoBruto.value;;
         cooperativa.value = cooperativaParametro * sueldoBruto.value;
@@ -40,13 +41,8 @@ sueldoBruto.addEventListener("change", () => {
 
         function formatear() {
 
-            // totalDescuentos = totalDescuentos.value
             totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
             sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
-
-
-            // totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.totalDescuentos);
-
             afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
             ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
             cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
@@ -72,6 +68,22 @@ btnImprimir.addEventListener("click", () => {
     const modal_reporte = document.querySelector(".modal_reporte");
     modal_reporte.classList.add("efecto");
 
+    //function para actualizar la fecha actual del reporte
+    function fecha_Actual() {
+
+        let date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        hours = date.getHours();
+        minutes = date.getMinutes();
+        seconds = date.getSeconds();
+
+        fechaActualReporte.innerHTML = `: ${day}/${month}/${year} ${hours}:${minutes} `;
+
+    };
+    fecha_Actual();
+
     // funtion para llenado de datos del reporte
     (function() {
         const nombreR = document.getElementById("nombreR").value = nombre.value;
@@ -86,30 +98,10 @@ btnImprimir.addEventListener("click", () => {
         let totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentos.value;
         let sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNeto.value;
 
-        // formato de valores a divisa en modal de reporte 
+        // formato de valores a divisa en modal de reporte para sueldo bruto
         sueldoBrutoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoBrutoR);
         sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBrutoR;
 
-        // afpR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afpR);
-        // afpR = document.getElementById("afpR").textContent = afpR;
-
-        // arsR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(arsR);
-        // arsR = document.getElementById("arsR").textContent = arsR;
-
-        // cooperativaR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativaR);
-        // cooperativaR = document.getElementById("cooperativaR").textContent = cooperativaR;
-
-        // clubR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(clubR);
-        // clubR = document.getElementById("clubR").textContent = clubR;
-
-        // prestamosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamosR);
-        // prestamosR = document.getElementById("prestamosR").textContent = prestamosR;
-
-        // totalDescuentosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentosR);
-        // totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentosR;
-
-        // sueldoNetoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNetoR);
-        // sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNetoR;
 
     })();
 });
@@ -190,7 +182,6 @@ btnGuardarParametros.addEventListener("click", () => {
 
         totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
         sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
-
         afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
         ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
         cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
