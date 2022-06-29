@@ -16,6 +16,7 @@ const cedula = document.getElementById("cedula");
 sueldoBruto.addEventListener("change", () => {
     console.log("hiciste un cambio al sueldo");
 
+
     (function() {
 
         let sueldoBrutoParametro = document.getElementById("sueldoBrutoParametro").value;
@@ -33,9 +34,26 @@ sueldoBruto.addEventListener("change", () => {
         club.value = clubParametro * sueldoBruto.value;
         prestamos.value = prestamosParametro * sueldoBruto.value;
 
-
         totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
         sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
+
+
+        function formatear() {
+
+            // totalDescuentos = totalDescuentos.value
+            totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
+            sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
+
+
+            // totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.totalDescuentos);
+
+            afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
+            ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
+            cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
+            club.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(club.value);
+            prestamos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamos.value);
+        };
+        formatear();
 
     })();
 });
@@ -72,26 +90,26 @@ btnImprimir.addEventListener("click", () => {
         sueldoBrutoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoBrutoR);
         sueldoBrutoR = document.getElementById("sueldoBrutoR").textContent = sueldoBrutoR;
 
-        afpR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afpR);
-        afpR = document.getElementById("afpR").textContent = afpR;
+        // afpR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afpR);
+        // afpR = document.getElementById("afpR").textContent = afpR;
 
-        arsR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(arsR);
-        arsR = document.getElementById("arsR").textContent = arsR;
+        // arsR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(arsR);
+        // arsR = document.getElementById("arsR").textContent = arsR;
 
-        cooperativaR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativaR);
-        cooperativaR = document.getElementById("cooperativaR").textContent = cooperativaR;
+        // cooperativaR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativaR);
+        // cooperativaR = document.getElementById("cooperativaR").textContent = cooperativaR;
 
-        clubR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(clubR);
-        clubR = document.getElementById("clubR").textContent = clubR;
+        // clubR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(clubR);
+        // clubR = document.getElementById("clubR").textContent = clubR;
 
-        prestamosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamosR);
-        prestamosR = document.getElementById("prestamosR").textContent = prestamosR;
+        // prestamosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamosR);
+        // prestamosR = document.getElementById("prestamosR").textContent = prestamosR;
 
-        totalDescuentosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentosR);
-        totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentosR;
+        // totalDescuentosR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentosR);
+        // totalDescuentosR = document.getElementById("totalDescuentosR").value = totalDescuentosR;
 
-        sueldoNetoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNetoR);
-        sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNetoR;
+        // sueldoNetoR = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNetoR);
+        // sueldoNetoR = document.getElementById("sueldoNetoR").value = sueldoNetoR;
 
     })();
 });
@@ -165,10 +183,22 @@ btnGuardarParametros.addEventListener("click", () => {
     club.value = clubParametro * sueldoBruto.value;
     prestamos.value = prestamosParametro * sueldoBruto.value;
 
-
     totalDescuentos.value = parseInt(afp.value) + parseInt(ars.value) + parseInt(cooperativa.value) + parseInt(club.value) + parseInt(prestamos.value);
     sueldoNeto.value = sueldoBruto.value - totalDescuentos.value;
 
+    function formatear() {
+
+        totalDescuentos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(totalDescuentos.value);
+        sueldoNeto.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(sueldoNeto.value);
+
+        afp.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(afp.value);
+        ars.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(ars.value);
+        cooperativa.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(cooperativa.value);
+        club.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(club.value);
+        prestamos.value = Intl.NumberFormat('en-IN', { style: 'currency', currency: 'USD' }).format(prestamos.value);
+
+    };
+    formatear();
 
 });
 
