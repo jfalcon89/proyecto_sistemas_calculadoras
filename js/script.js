@@ -17,15 +17,15 @@ btnCalcula.addEventListener("click", () => {
         const actMasculino = 2.447 - (edad * 0.09156) + (talla * 0.1074) + (peso * 0.3362);
         const respuesta = document.getElementById("respuesta");
         const labelResul = document.getElementById("labelResul");
-        labelResul.textContent = "Agua corporal total"
-        respuesta.textContent = actMasculino;
+        labelResul.textContent = "Litros de agua corporal total"
+        respuesta.textContent = actMasculino.toFixed(2);
     } else {
 
         const actFemenina = -2.097 + (talla * 0.1069) + (peso * 0.2466);
         const respuesta = document.getElementById("respuesta");
         const labelResul = document.getElementById("labelResul");
-        labelResul.textContent = "Agua corporal total"
-        respuesta.textContent = actFemenina;
+        labelResul.textContent = "Litros de agua corporal total"
+        respuesta.textContent = actFemenina.toFixed(2);
 
     };
 

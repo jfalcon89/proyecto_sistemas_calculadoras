@@ -7,7 +7,7 @@ btnConvertir.addEventListener("click", () => {
     const inputKilos = parseInt(document.getElementById("inputKilos").value);
     const operacion = inputKilos * 2.20462;
     let resultados = document.getElementById("resultados");
-    resultados.textContent = operacion;
+    resultados.textContent = operacion.toFixed(2);
 
 
 })
